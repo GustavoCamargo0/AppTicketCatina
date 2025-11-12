@@ -33,7 +33,7 @@ function CardapioComidas({ navigation }) {
 
   return (
     <View style={[{ height: '100%', backgroundColor: theme.background }]}>
-      <Text style={[styles.text, { color: theme.text, fontSize: 20, textAlign: 'right' }]} >Saldo: {Valor}$ </Text>
+      <Text style={[styles.text, { color: theme.text, fontSize: 20, textAlign: 'right' }]} >Saldo: R${Valor} </Text>
   <ScrollView showsVerticalScrollIndicator={true} style={{ flex: 1 }} contentContainerStyle={styles.container}>
 
         {result.map((item, index) => {
@@ -46,7 +46,7 @@ function CardapioComidas({ navigation }) {
               />
               <Text style={[styles.text, { color: theme.text }]}>
                 🍽️ Nome: {item.Nome}{"\n"}
-                💰 Preço: {item.Valor + " $"}
+                💰 Preço: { " R$" + item.Valor }
               </Text>
               <View style={{ flexDirection: 'column' }} >
                 <NewButton style={{ width: 100, height: 60, }}
@@ -131,7 +131,7 @@ function CardapioBebidas({ navigation }) {
 
   return (
     <View style={[{ height: '100%', backgroundColor: theme.background }]}>
-      <Text style={[styles.text, { color: theme.text, fontSize: 20, textAlign: 'right' }]} >Saldo: {Valor}$ </Text>
+      <Text style={[styles.text, { color: theme.text, fontSize: 20, textAlign: 'right' }]} >Saldo: R${Valor} </Text>
   <ScrollView showsVerticalScrollIndicator={true} style={{ flex: 1 }} contentContainerStyle={styles.container}>
 
         {result.map((item, index) => {
@@ -144,7 +144,7 @@ function CardapioBebidas({ navigation }) {
               />
               <Text style={[styles.text, { color: theme.text }]}>
                 🍽️ Nome: {item.Nome}{"\n"}
-                💰 Preço: {item.Valor + " $"}
+                💰 Preço: {" R$" + item.Valor}
               </Text>
               <View style={{ flexDirection: 'column' }} >
                 <NewButton style={{ width: 100, height: 60 }}
@@ -228,7 +228,7 @@ function CardapioOutros({ navigation }) {
 
   return (
     <View style={[{ height: '100%', backgroundColor: theme.background }]}>
-      <Text style={[styles.text, { color: theme.text, fontSize: 20, textAlign: 'right' }]} >Saldo: {Valor}$ </Text>
+      <Text style={[styles.text, { color: theme.text, fontSize: 20, textAlign: 'right' }]} >Saldo: R${Valor} </Text>
   <ScrollView showsVerticalScrollIndicator={true} style={{ flex: 1 }} contentContainerStyle={styles.container}>
 
         {result.map((item, index) => {
@@ -241,7 +241,7 @@ function CardapioOutros({ navigation }) {
               />
               <Text style={[styles.text, { color: theme.text }]}>
                 🍽️ Nome: {item.Nome}{"\n"}
-                💰 Preço: {item.Valor + " $"}
+                💰 Preço: {" R$" + item.Valor}
               </Text>
               <View style={{ flexDirection: 'column' }} >
                 <NewButton style={{ width: 100, height: 60 }}

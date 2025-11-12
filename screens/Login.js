@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput, Alert } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Alert, ImageBackground } from 'react-native';
 import { supabase } from '../Back-end/supabase';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NewButton from '../components/componets';
@@ -11,7 +11,6 @@ export default function Login({ navigation }) {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
 
-  // 🔹 Carga nombre guardado en AsyncStorage al iniciar
   useEffect(() => {
     async function loadData() {
       const storedName = await AsyncStorage.getItem('@storage_Name');
@@ -20,12 +19,10 @@ export default function Login({ navigation }) {
     loadData();
   }, []);
 
-  // 🔹 Guarda el nombre actual
   async function storeData() {
     if (name) await AsyncStorage.setItem('@storage_Name', name);
   }
 
-  // 🔹 Verifica usuario en Supabase
   async function loadUsers() {
     if (!name || !email || !pass) {
       Alert.alert('Erro', 'Por favor, preencha todos os campos.');
@@ -64,32 +61,34 @@ export default function Login({ navigation }) {
 
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.title, { color: theme.text }]}>Login</Text>
+      <ImageBackground  style={[styles.container, {height:'100%', width:'100%'}]} source={{ uri:'https://wallpaperaccess.com/full/4893732.jpg' }} >
+        <Text style={[styles.title, { color: theme.text }]}>Login</Text>
 
-      <TextInput
-        style={[styles.input, { color: theme.text }]}
-        placeholder="Digite Seu Nome"
-        value={name}
-        onChangeText={setName}
-        keyboardType="default"
-      />
-      <TextInput
-        style={[styles.input, { color: theme.text }]}
-        placeholder="Digite Seu Email"
-        value={email}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-      />
-      <TextInput
-        style={[styles.input, { color: theme.text }]}
-        placeholder="Digite Sua Senha"
-        value={pass}
-        onChangeText={setPass}
-        secureTextEntry
-        keyboardType="default"
-      />
+        <TextInput
+          style={[styles.input, { color: theme.text }]}
+          placeholder="Digite Seu Nome"
+          value={name}
+          onChangeText={setName}
+          keyboardType="default"
+        />
+        <TextInput
+          style={[styles.input, { color: theme.text }]}
+          placeholder="Digite Seu Email"
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+        />
+        <TextInput
+          style={[styles.input, { color: theme.text }]}
+          placeholder="Digite Sua Senha"
+          value={pass}
+          onChangeText={setPass}
+          secureTextEntry
+          keyboardType="default"
+        />
 
-      <NewButton onPress={loadUsers}>Entrar</NewButton>
+        <NewButton onPress={loadUsers}>Entrar</NewButton>
+      </ImageBackground>
     </View>
   );
 }

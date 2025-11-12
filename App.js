@@ -21,7 +21,7 @@ function RootNavigator() {
           headerTintColor: theme.text,
         }}
       >
-        <Stack.Screen name="Login" component={Login}  />
+        <Stack.Screen name="Login" component={Login}  options={{ headerShown: false }} />
         <Stack.Screen name="Drawer" component={DrawerNavigator} options={{ headerShown: false }} />
         <Stack.Screen name="DetalhesCompras" component={DetalhesCompras} />
         <Stack.Screen name="RouterAdmin" component={RouterAdmin} options={{ headerShown: false }} />

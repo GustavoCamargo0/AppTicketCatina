@@ -15,7 +15,6 @@ export default function Perfil({ navigation }) {
   useEffect(() => {
     (async () => {
       try {
-        // 🧠 Cargar nombre, turma y descripción
         const storedName = await AsyncStorage.getItem("@storage_Name");
         const storedTurma = await AsyncStorage.getItem("@storage_Turma");
         const storedDescricao = await AsyncStorage.getItem("@storage_Descricao");
@@ -53,8 +52,7 @@ export default function Perfil({ navigation }) {
 
       <Text style={[styles.text, { color: theme.text }]}>👤 Nome: {name}</Text>
       <Text style={[styles.text, { color: theme.text }]}>🎓 Turma: {turma}</Text>
-      <Text style={[styles.text, { color: theme.text }]}>
-        📝 Descrição: {descricao}
+      <Text style={[styles.text, { color: theme.text }]}>📝 Descrição: {descricao}
       </Text>
     </View>
   );

@@ -93,7 +93,7 @@ useEffect(() => {
   };
 
   return (
-    <View style={[{ height: '100%', backgroundColor: theme.background }]}>
+    <View style={[{ height: '100%', backgroundColor: theme.background, justifyContent:'center', alignItems:'center' }]}>
       <Text style={[styles.text, { color: theme.text }]}>Tela do Admin</Text>
       <ScrollView showsVerticalScrollIndicator={true} contentContainerStyle={[styles.container, { backgroundColor: theme.background }]}>
 

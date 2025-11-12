@@ -43,7 +43,7 @@ export default function Home({ navigation }) {
   }, []);
   return (
     <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={{ fontSize: 24, margin: 10, color: theme.text }}>Ticket: {tickets}{"\n"}Saldo: {Valor} </Text>
+      <Text style={{ fontSize: 24, margin: 10, color: theme.text }}>Ticket: {tickets}{"\n"}Saldo: R${Valor} </Text>
       <View style={styles.row}>
         <View style={styles.collum}>
           <NewButton style={styles.button} onPress={() => { navigation.navigate('Creditos') }}>

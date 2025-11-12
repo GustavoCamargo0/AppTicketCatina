@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, Image, Platform } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, Platform, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useState, useEffect, useContext } from 'react';
 import NewButton from '../components/componets';
@@ -26,7 +26,7 @@ export default function Configs({ navigation }) {
       allowsEditing: true,
       aspect: [1, 1],
       quality: 1,
-      base64: Platform.OS === 'web', // ⚡ sólo genera base64 en web
+      base64: Platform.OS === 'web',
     });
 
     if (!result.canceled) {
@@ -85,16 +85,21 @@ export default function Configs({ navigation }) {
   }, []);
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.background }]}>
-      <Text style={[styles.text, { color: theme.text }]}>Configurações</Text>
+        <ScrollView
+      contentContainerStyle={[styles.container, { backgroundColor: theme.background }]}
+      showsVerticalScrollIndicator={false} 
+    >
+      <Text style={[styles.title, { color: theme.text }]}>Configurações</Text>
 
+      <Text style={[styles.text, {color: theme.text }]}>Modo Tema</Text>
       <NewButton onPress={mudarTema}>
-        {darkMode ? '🌞' : '🌙'}
+        {darkMode ? '🌙' : '🌞'}
       </NewButton>
 
-      <NewButton onPress={pickImage}>Inserir Img</NewButton>
 
+      <Text style={[styles.text, {color: theme.text}]}>Foto De Usuario</Text>
       {imgGet ? (
+        <NewButton style={{margin: 30}} onPress={pickImage}>
         <Image
           source={{ uri: imgGet }}
           style={{
@@ -103,12 +108,20 @@ export default function Configs({ navigation }) {
             borderRadius: 60,
             borderWidth: 2,
             borderColor: theme.text,
-          }}
-        />
-      ) : (
-        <Text style={{ color: theme.text }}>Nenhuma imagem salva</Text>
+          }}   />
+          </NewButton>
+      ) : 
+      (<NewButton style={{
+        width: 120,
+        height: 120,
+        borderRadius: 60,
+        borderWidth: 2,
+        borderColor: theme.text
+      }}  onPress={pickImage}>
+      </NewButton>
       )}
 
+     <Text style={[styles.text, {color: theme.text }]}>Infos do Aluno</Text>
       <TextInput
         style={[styles.input, { color: theme.text, borderColor: theme.text }]}
         placeholder="Alterar Nome de usuário"
@@ -133,20 +146,19 @@ export default function Configs({ navigation }) {
 
       <NewButton onPress={saveName}>Salvar</NewButton>
       <NewButton onPress={() => navigation.navigate('Login')}>Sair</NewButton>
-    </View>
+      </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    gap: 20,
+    gap: 10,
     alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
     fontSize: 20,
-    fontWeight: 'bold',
   },
   input: {
     borderWidth: 1,
@@ -155,4 +167,8 @@ const styles = StyleSheet.create({
     height: 50,
     width: 250,
   },
+  title:{
+    fontSize: 30,
+    fontWeight: 'bold',
+  }
 });
